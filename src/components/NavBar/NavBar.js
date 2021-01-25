@@ -2,7 +2,7 @@ import logo from "../../img/logo.png";
 import './navbar.css';
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
-function Navi(){
+function NavBar(){
     return(
         <>
         <Navbar variant="light" expand="lg">
@@ -38,4 +38,4 @@ function Navi(){
     )
 }
 
-export default Navi;
+export default NavBar;

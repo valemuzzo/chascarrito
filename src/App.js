@@ -1,12 +1,12 @@
 import './css/style.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import Navi from './components/NavBar/NavBar';
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
     <>
     <div class="container-fluid">
-      <Navi/>
+      <NavBar/>
     </div>
     </>
   );
