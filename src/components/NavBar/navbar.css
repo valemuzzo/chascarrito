@@ -1,0 +1,27 @@
+.navbar-brand {
+  font-family: "Carter One", cursive;
+  margin-top: 3px;
+  font-size: 2em;
+}
+
+nav {
+  background-color: #9999ff;
+}
+
+nav a.nav-link {
+  color: white;
+}
+
+.show .dropdown-menu {
+  color: #ff3399;
+
+  font-weight: bold;
+  background-color: #c6c6ff;
+}
+a.dropdown-item {
+  color: #ffffff;
+}
+a.dropdown-item:hover {
+  color: #ffff33;
+  background-color: #ff3399;
+}
