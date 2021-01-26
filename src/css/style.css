@@ -1,10 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?&family=Carter+One&family=Encode+Sans:wght@400;600&family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?&family=Carter+One&family=Encode+Sans:wght@400;600&family=Open+Sans&family=Nanum+Pen+Script&display=swap");
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: black;
+  background-color: rgb(36, 36, 36);
   /*background-image: url("../img/bg.jpg");*/
 }
+
 p {
   font-size: 13px;
+  color: #ccc;
+}
+
+.textoloco {
+  color: #ff3399;
+  font-family: "Nanum Pen Script", cursive;
+  text-shadow: -2px -2px 1px rgb(5, 175, 253);
 }

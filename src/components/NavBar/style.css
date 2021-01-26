@@ -1,16 +1,27 @@
+/*ESTILO BRANDING (ISOLOGO)*/
 .navbar-brand {
   font-family: "Carter One", cursive;
   font-size: 2em;
+  color: #000;
+  text-shadow: 2px 2px 1px #6ce2ff;
+  text-decoration: none;
+  font-weight: normal;
 }
 
+/*BARRA DE NAVEGACION*/
 nav {
   background-color: #9999ff;
+  font-weight: 600;
 }
 
 nav a.nav-link {
-  color: white;
+  color: #6ce2ff;
+}
+nav a.nav-link:hover {
+  color: #ffff33;
 }
 
+/*MENUS DROPDOWN*/
 .show .dropdown-menu {
   color: #ff3399;
 

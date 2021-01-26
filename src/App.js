@@ -1,11 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './components/NavBar';
+import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
   return (
     <>
-    <div class="container-fluid">
+    <div className="container-fluid">
       <NavBar/>
+      <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
     </div>
     </>
   );

@@ -1,16 +1,16 @@
 import logo from "../../img/logo.png";
-import cart from "../../img/cart-icon.png";
+import CartWidget from "../CartWidget";
 import './style.css';
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 function NavBar(){
     return(
         <>
-        <Navbar variant="light" expand="lg">
+        <Navbar expand="lg">
             <Navbar.Brand href="#home">
             <img alt="" src={logo} width="40em" className="d-inline-block align-top"/> Chascarrito
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle  />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <NavDropdown title="Chascos & Bromas" id="basic-nav-dropdown">
@@ -33,7 +33,7 @@ function NavBar(){
                 </NavDropdown>
                 <Nav.Link href="">Juguetes</Nav.Link>
                 </Nav>
-                <Nav.Link href=""><img width="40em" src={cart}/></Nav.Link>
+                <Nav.Link href=""><CartWidget/></Nav.Link>
             </Navbar.Collapse>
         </Navbar>
         </>
