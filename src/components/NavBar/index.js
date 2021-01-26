@@ -1,5 +1,6 @@
 import logo from "../../img/logo.png";
-import './navbar.css';
+import cart from "../../img/cart-icon.png";
+import './style.css';
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 
 function NavBar(){
@@ -32,6 +33,7 @@ function NavBar(){
                 </NavDropdown>
                 <Nav.Link href="">Juguetes</Nav.Link>
                 </Nav>
+                <Nav.Link href=""><img width="40em" src={cart}/></Nav.Link>
             </Navbar.Collapse>
         </Navbar>
         </>
