@@ -4,12 +4,10 @@ import ItemListContainer from './containers/ItemListContainer';
 
 function App() {
   return (
-    <>
-    <div className="container-fluid">
+    <div className="container-fluid px-0">
       <NavBar/>
       <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
     </div>
-    </>
   );
 }
 

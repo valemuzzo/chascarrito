@@ -3,19 +3,20 @@
   font-family: "Carter One", cursive;
   font-size: 2em;
   color: #000;
-  text-shadow: 2px 2px 1px #6ce2ff;
+  text-shadow: 2px 2px 1px #a3f1fd;
   text-decoration: none;
   font-weight: normal;
 }
 
 /*BARRA DE NAVEGACION*/
 nav {
-  background-color: #9999ff;
+  background-color: #ad8df7;
   font-weight: 600;
 }
 
+/*estilo del canasto del carrito*/
 nav a.nav-link {
-  color: #6ce2ff;
+  color: #a3f1fd;
 }
 nav a.nav-link:hover {
   color: #ffff33;
@@ -26,7 +27,7 @@ nav a.nav-link:hover {
   color: #ff3399;
 
   font-weight: bold;
-  background-color: #c6c6ff;
+  background-color: #a3f1fd;
 }
 a.dropdown-item {
   color: #000;
