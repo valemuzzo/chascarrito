@@ -1,0 +1,27 @@
+.cardproducto {
+  border: 1px solid #e3c5fc;
+  text-align: center;
+}
+
+.card-body {
+  padding-bottom: 0;
+}
+.card-body h5 {
+  font-size: 0.8em;
+}
+.card-footer {
+  border: none;
+  background-color: #fff;
+}
+.card-footer .btn {
+  font-size: 0.9em;
+}
+.card-title {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.precio {
+  color: purple;
+  font-weight: 600;
+}
