@@ -9,9 +9,9 @@ const ItemDetail = ({producto})=>{
     return(
         <Container>
             <Row key={producto.id}>
-                <Col><img src={producto.urlImagen}/></Col>
+                <Col md="auto"><img src={producto.urlImagen}/></Col>
                 <Col>
-                    <h4>{producto.titulo}</h4>
+                    <h3>{producto.titulo}</h3>
                     <h5>Categoría: {producto.categoria}</h5>
                     <h4 className='precio'>{producto.precio}</h4>
                     <p>{producto.descripcion}</p>

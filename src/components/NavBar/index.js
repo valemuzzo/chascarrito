@@ -1,3 +1,4 @@
+import  {Link} from 'react-router-dom';
 import logo from "../../img/logo.png";
 import CartWidget from "../CartWidget";
 import './style.css';
@@ -8,7 +9,7 @@ function NavBar(){
         <>
         <Navbar expand="lg">
             <Navbar.Brand href="#home">
-            <img alt="" src={logo} width="40em" className="d-inline-block align-top"/> Chascarrito
+            <Link to="/"><img alt="" src={logo} width="40em" className="d-inline-block align-top"/> Chascarrito</Link>
             </Navbar.Brand>
             <Navbar.Toggle  />
             <Navbar.Collapse id="basic-navbar-nav">

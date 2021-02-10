@@ -14,12 +14,7 @@ useEffect(()=>{
 },[]);
     
     
-    //agregar productos
-    const onAdd = (items)=>{
-        
-            alert(`Agregó ${items} productos al carrito`);
-        
-    };
+ 
 
     return(
         <>

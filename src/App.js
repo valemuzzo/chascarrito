@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import NavBar from './components/NavBar';
 import ItemListContainer from './containers/ItemListContainer';
-import  {BrowserRouter, Switch, Route, Link} from 'react-router-dom';
+import ItemDetailContainer from './containers/ItemDetailContainer';
+import  {BrowserRouter, Switch, Route,} from 'react-router-dom';
 
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
             <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
           </Route>
           </Switch>
+          <Route exact path='/producto/:id' component={ItemListContainer}>
+            <ItemDetailContainer />
+          </Route>
 
       </BrowserRouter>
     </div>
