@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
           setTimeout(() => resolve(db_productos), 2000);
         });
         getItems.then(function (resultado){
-        let prodId= resultado.find(prod=>{return prod.id==id})//busco dentro del resultado (mi DB), un producto que tenga un id igual que el id que me guarda useParams (ese id viene de la ruta desde la card)
+        let prodId= resultado.find(prod=>{return prod.id==id})//busco dentro del resultado (mi DB), un solo producto que tenga un id igual que el id que me guarda useParams (ese id viene de la ruta desde la card)
         setProducto(prodId);
 
     });
