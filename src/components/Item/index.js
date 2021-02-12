@@ -4,7 +4,7 @@ import {Card, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-bootstrap/Modal';
-import ItemDetailContainer from '../../containers/ItemDetailContainer';
+import ItemDetail from '../ItemDetail';
 import  {Link} from 'react-router-dom';
   
   
@@ -21,7 +21,7 @@ const Item = ({producto})=>{
             <Modal.Title>Vista rápida</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-              <ItemDetailContainer producto={producto}/>
+              <ItemDetail producto={producto} />
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -31,10 +31,10 @@ const Item = ({producto})=>{
           </Modal.Footer>
         </Modal>
         <div>
-          <Card className='cardproducto my-2 pt-2' key={producto.id}>
+          <Card className="cardproducto my-2 pt-2 d-flex flex-column" key={producto.id}>
             <Card.Img variant="top" src={producto.urlImagen} />
             
-            <Card.Body>
+            <Card.Body >
             
             <Card.Title><Link to={`/producto/${producto.id}`}>{producto.titulo}</Link></Card.Title>
             

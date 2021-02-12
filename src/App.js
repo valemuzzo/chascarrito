@@ -15,9 +15,10 @@ function App() {
             <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
           </Route>
           </Switch>
-          <Route exact path='/producto/:id' component={ItemListContainer}>
+          <Route exact path='/producto/:id' component={ItemDetailContainer}>
             <ItemDetailContainer />
           </Route>
+          <Route  path='/productos/:CategoriaName/:subCategoriaName' component={ItemListContainer}></Route>
 
       </BrowserRouter>
     </div>

@@ -1,8 +1,14 @@
 .cardproducto {
   border: 1px solid #e3c5fc;
   text-align: center;
+  min-height: 35em;
 }
-
+.cardproducto img {
+  height: auto;
+  width: 18em;
+  padding: 5px;
+  margin: 0 auto;
+}
 .card-body {
   padding-bottom: 0;
 }
