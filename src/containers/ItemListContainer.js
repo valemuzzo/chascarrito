@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import db_productos from '../mocks/db_productos.js';
 import ItemList from '../components/ItemList';
+import Item from '../components/Item';
+import {CardDeck} from 'react-bootstrap';
 
 
 const ItemListContainer=({text})=>{
@@ -28,7 +30,19 @@ useEffect(() => {
     });
 }, [categoria]);
     
+const mostrarCategoria = () => {
     
+    if (productosCategoria.length === 0)
+        return (
+            <div>
+                <h3>No hay productos en esta categoria</h3>
+            </div>
+        );
+    return productosCategoria.map(producto => (
+        
+        <Item  producto={producto} />
+    ));
+};
  
 
     return(
@@ -36,7 +50,11 @@ useEffect(() => {
         {categoria ? 
         <><h2>{categoria}</h2>
             <div className="textoloco text-center mt-5"><h2>{text}</h2></div>
-            <ItemList productos={productos}/></>:
+            <CardDeck className="mx-2 mt-5">
+                {mostrarCategoria()}
+            </CardDeck>
+        </>
+        :
         <>
             <ItemList productos={productos}/>
         </>
