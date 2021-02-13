@@ -11,14 +11,16 @@ function App() {
       <BrowserRouter>
         <NavBar/>
           <Switch>
-          <Route exact path='/' component={ItemListContainer}>
+          <Route exact path='/'>
             <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
           </Route>
           </Switch>
-          <Route exact path='/producto/:id' component={ItemDetailContainer}>
+          <Route exact path='/producto/:id'>
             <ItemDetailContainer />
           </Route>
-          <Route  path='/productos/:categoria' component={ItemListContainer}></Route>
+          <Route  exact path='/:categoria'>
+          <ItemListContainer/>
+          </Route>
 
       </BrowserRouter>
     </div>
