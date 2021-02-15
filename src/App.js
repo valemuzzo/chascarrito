@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.css';
+import  {BrowserRouter, Switch, Route,} from 'react-router-dom';
 import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 import ItemListContainer from './containers/ItemListContainer';
 import ItemDetailContainer from './containers/ItemDetailContainer';
-import  {BrowserRouter, Switch, Route,} from 'react-router-dom';
+
 
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
           <Route  exact path='/:categoria'>
           <ItemListContainer/>
           </Route>
-
+          <Footer/>
       </BrowserRouter>
     </div>
   );

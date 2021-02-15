@@ -1,5 +1,5 @@
+import "./style.css";
 import {ButtonGroup, Button} from 'react-bootstrap';
-import "./style.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { useState } from "react";

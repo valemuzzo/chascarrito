@@ -1,11 +1,17 @@
-import {Container, Row, Col,} from 'react-bootstrap';
+import {Container, Row, Col, Button} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 import ItemCounter from '../ItemCounter';
+
 const ItemDetail = ({producto})=>{
+    const [addCarro, setAddCarro] = useState(false);
     const onAdd = (items)=>{
-        
         alert(`Agregó ${items} productos al carrito`);
+        setAddCarro(true);
+    };   
     
-};   
+
     return(
         <Container>
             <Row key={producto.id}>
@@ -15,7 +21,9 @@ const ItemDetail = ({producto})=>{
                     <h5>Categoría: {producto.categoria}</h5>
                     <h4 className='precio'>{producto.precio}</h4>
                     <p>{producto.descripcion}</p>
-                    <ItemCounter stock={10} onAdd={onAdd}/>
+                    <p><b>Stock: {producto.stock}</b></p>
+                    {addCarro?<Button variant="info" className="px-3" size="sm">
+            Finalizar compra  <FontAwesomeIcon className="fa-1x" icon={faShoppingBasket} /></Button>:<ItemCounter stock={producto.stock} onAdd={onAdd}/>}
                 </Col>
             </Row>
         </Container>

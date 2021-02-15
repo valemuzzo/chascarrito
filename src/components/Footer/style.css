@@ -1,0 +1,10 @@
+.footer A {
+  color: purple;
+}
+.footer A:hover {
+  color: #17a2b8;
+}
+
+.footer {
+  background-color: #dcd0fa;
+}

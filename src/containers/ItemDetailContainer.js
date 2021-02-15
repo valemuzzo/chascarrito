@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import {  useParams } from 'react-router-dom';
-import ItemDetail from '../components/ItemDetail';
 import db_productos from '../mocks/db_productos.js';
+import ItemDetail from '../components/ItemDetail';
+
 
 const ItemDetailContainer = () => {
     const {id}=useParams();

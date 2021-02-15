@@ -1,5 +1,7 @@
-import Item from '../Item'
 import {CardDeck} from 'react-bootstrap';
+import Item from '../Item';
+
+
 const ItemList = ({productos})=>{
     return(
         <>

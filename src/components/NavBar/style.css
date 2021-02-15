@@ -19,26 +19,45 @@ nav {
   background-color: #ad8df7;
   font-weight: 600;
 }
-
-/*estilo del canasto del carrito*/
-nav a.nav-link {
-  color: #a3f1fd;
+Nav A {
+  color: #000;
+  font-weight: normal;
+  padding-top: 0.5em;
+  padding-right: 0.8em;
 }
-nav a.nav-link:hover {
-  color: #ffff33;
-}
-
 /*MENUS DROPDOWN*/
 .show .dropdown-menu {
   color: #ff3399;
-
   font-weight: bold;
   background-color: #b9f4fd;
 }
-a.dropdown-item {
+
+#basic-nav-dropdown {
+  color: #000;
+  padding-left: 0;
+  padding-right: 0.8em;
+}
+
+.dropdown-menu a {
+  color: #000;
+  font-weight: normal;
+  display: block;
+  padding-left: 1em;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+.dropdown-menu a:visited {
   color: #000;
 }
-a.dropdown-item:hover {
+.dropdown-menu a:hover {
   color: #ffff33;
   background-color: #ff3399;
+}
+
+/*estilo del canasto del carrito*/
+.carrito a:active {
+  color: #a3f1fd;
+}
+.carrito a:hover {
+  color: #ffff33;
 }

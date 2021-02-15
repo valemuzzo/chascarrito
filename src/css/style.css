@@ -15,4 +15,10 @@ p {
   color: #ff3399;
   font-family: "Nanum Pen Script", cursive;
   text-shadow: -2px -2px 1px#3cc8dd;
+  padding: 0;
+}
+.categoria {
+  color: purple;
+  text-transform: capitalize;
+  padding-left: 0.7em;
 }

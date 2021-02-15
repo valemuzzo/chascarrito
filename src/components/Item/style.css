@@ -22,12 +22,22 @@
 .card-footer .btn {
   font-size: 0.9em;
 }
-.card-title {
+.card-title A {
   font-weight: 600;
-  font-size: 1.2em;
+  font-size: 1em;
+  color: #000;
+}
+.card-title A:hover {
+  font-weight: 600;
+  font-size: 1em;
+  color: purple;
 }
 
 .precio {
   color: purple;
   font-weight: 600;
+}
+
+.col-md-auto img {
+  max-width: 20em;
 }
