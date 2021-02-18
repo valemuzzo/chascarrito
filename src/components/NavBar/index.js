@@ -37,7 +37,7 @@ function NavBar(){
                 </NavDropdown>
                 <Link to="/juguetes">Juguetes</Link>
                 </Nav>
-                <NavLink style={carrito} to="/"><CartWidget /></NavLink>
+                <NavLink style={carrito} to="/Cart"><CartWidget /></NavLink>
             </Navbar.Collapse>
         </Navbar>
         </>

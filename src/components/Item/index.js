@@ -19,8 +19,8 @@ const Item = ({producto})=>{
   const [addCarro, setAddCarro] = useState(false);
     const onAdd = (items)=>{
         alert(`Agregó ${items} productos al carrito`);
-        setAddCarro(true);
-    };  
+        setAddCarro(items);
+    };     
 
     return(
       <>
@@ -54,8 +54,8 @@ const Item = ({producto})=>{
             
             </Card.Body>
             <Card.Footer>
-            {addCarro?<Button variant="info" className="px-3">
-            Finalizar compra<FontAwesomeIcon className="fa-1x" icon={faShoppingBasket} /></Button>:<ItemCounter stock={producto.stock} onAdd={onAdd}/>}
+            {addCarro?<Link to="/Cart"><Button variant="info" className="px-3" size="sm">
+            Finalizar compra  <FontAwesomeIcon className="fa-1x" icon={faShoppingBasket} /></Button></Link>:<ItemCounter stock={producto.stock} onAdd={onAdd}/>}
             </Card.Footer>
         </Card>
       </div>
