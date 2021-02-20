@@ -9,21 +9,18 @@ import Cart from './components/Cart';
 
 function App() {
   return (
-    <div className="container-fluid px-0">
+    <div className="d-flex flex-column contenedor container-fluid px-0">
       <BrowserRouter>
         <NavBar/>
           <Switch>
-          <Route exact path='/'>
-            <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
-          </Route>
+            <Route exact path='/'>
+              <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
+            </Route>
+            <Route  exact path='/Cart' component={Cart}/>
+            <Route exact path='/producto/:id' component={ItemDetailContainer}/>
+            <Route  exact path='/:categoria' component={ItemListContainer}/>
           </Switch>
-          <Route exact path='/producto/:id' component={ItemDetailContainer}/>
-           
-          <Route  exact path='/:categoria'>
-          <ItemListContainer/>
-          </Route>
-          <Route  exact path='/Cart' component={Cart}/>
-          <Footer className="mb-0 bd-highlight"/>
+          <Footer/>
       </BrowserRouter>
     </div>
   );

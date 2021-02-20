@@ -39,7 +39,7 @@ useEffect(() => {
 //Loading...
 if (isLoading){
 return(
-    <div className="d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
+    <div className="mincontenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
 )
 };//
 
@@ -52,7 +52,7 @@ const mostrarCategoria = () => {
     ));
                 
  return ( 
-            <div>
+            <div className="mincontenedor">
                 <h3 className="ml-4">No hay productos en esta categoría</h3>
             </div>
         );
@@ -71,9 +71,10 @@ const mostrarCategoria = () => {
         </>
         :
         <>
-            <div className="d-flex flex-column text-align-center textoloco align-items-center mt-5">
+            <div className="textoloco align-items-center mt-5">
             <h2>{text}</h2>
             <img style={{width:'96%'}} src={Banner}/>
+            
             </div>
             <ItemList productos={productos}/>
         </>

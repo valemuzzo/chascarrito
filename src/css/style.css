@@ -22,3 +22,6 @@ p {
   text-transform: capitalize;
   padding-left: 0.7em;
 }
+.mincontenedor {
+  min-height: 300px;
+}
