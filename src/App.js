@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="d-flex flex-column contenedor container-fluid px-0">
-      <CartProvider>
+      <CartProvider defaultValue={[]}>
       <BrowserRouter>
         <NavBar/>
           <Switch>

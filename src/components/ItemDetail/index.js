@@ -2,16 +2,17 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-import { CartContext } from '../../context/CartContext';
+import { useCartContext } from '../../context/CartContext';
 import {Link} from 'react-router-dom';
 import ItemCounter from '../ItemCounter';
 
 const ItemDetail = ({producto})=>{
     const [addCarro, setAddCarro] = useState(false);
-
+    const {agregar} = useCartContext();
     const onAdd = (items)=>{
         alert(`Agregó ${items} productos al carrito`);
         setAddCarro(items);
+        agregar({producto: producto, cantidad: items})
     };   
     
 
