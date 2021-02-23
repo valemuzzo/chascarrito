@@ -5,7 +5,7 @@ import Item from '../Item';
 const ItemList = ({productos})=>{
     return(
         <>
-        <CardDeck className="mx-2 mt-5">
+        <CardDeck className="justify-content-center mx-2 mt-5 ">
 
         {productos.map((producto)=>{
             return(

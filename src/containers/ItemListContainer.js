@@ -39,7 +39,7 @@ useEffect(() => {
 //Loading...
 if (isLoading){
 return(
-    <div className="mincontenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
+    <div className="contenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
 )
 };//
 
@@ -65,13 +65,13 @@ const mostrarCategoria = () => {
         {categoria ? 
         <><h3 className="categoria">{categoria}</h3>
             
-            <CardDeck className="mx-2 mt-5">
+            <CardDeck className="justify-content-center mx-2 mt-5">
                 {mostrarCategoria()}
             </CardDeck>
         </>
         :
         <>
-            <div className="textoloco align-items-center mt-5">
+            <div className="textoloco align-items-center mt-5 mx-2">
             <h2>{text}</h2>
             <img style={{width:'96%'}} src={Banner}/>
             
