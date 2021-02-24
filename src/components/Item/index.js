@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useCartContext } from '../../context/CartContext';
 import  {Link} from 'react-router-dom';
 import ItemDetail from '../ItemDetail';
 import ItemCounter from '../ItemCounter';
@@ -12,6 +13,7 @@ import ItemCounter from '../ItemCounter';
   
 const Item = ({producto})=>{
     const [show, setShow] = useState(false);
+    const {agregar} = useCartContext();
   
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,6 +22,7 @@ const Item = ({producto})=>{
     const onAdd = (items)=>{
         alert(`Agregó ${items} productos al carrito`);
         setAddCarro(items);
+        agregar({producto: producto, items: items})
     };     
 
     return(

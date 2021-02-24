@@ -1,0 +1,18 @@
+.precio-total {
+  font-size: 1em;
+  font-weight: 600;
+  background-color: #c4b0f5;
+  text-align: right;
+  padding-right: 2.3em;
+  margin-top: 0;
+}
+.table-hover {
+  background-color: #e9e0fd;
+  margin-bottom: 0;
+}
+.color-row {
+  background-color: #d7c6fc;
+}
+.borde {
+  border-bottom: 1px solid #fff;
+}

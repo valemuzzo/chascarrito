@@ -12,7 +12,7 @@ const ItemDetail = ({producto})=>{
     const onAdd = (items)=>{
         alert(`Agregó ${items} productos al carrito`);
         setAddCarro(items);
-        agregar({producto: producto, cantidad: items})
+        agregar({producto: producto, items: items})
     };   
     
 

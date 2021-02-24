@@ -1,17 +1,21 @@
+import './cart.css';
+import { useCartContext } from "../../context/CartContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+
 export const CartItem = ({ producto, items }) => {
+    const {removeItem} = useCartContext();
     return (
-        <div>
-            <div id="left">
-                <img src={producto.urlImagen} alt="producto" />
-            </div>
-            <div id="right">
-                <p id="title">{producto.titulo}</p>
-                <div>
-                    <p>Cantidad: {items}</p>
-                </div>
-                <p>$ {producto.precio * producto.items}</p>
-                
-            </div>
-        </div>
+        
+            
+                        <tr key={producto.id} >
+                            <td style={{textAlign:'center'}} className="borde"><img style={{maxWidth:'50px'}} src={producto.urlImagen}/></td>
+                            <td  className="borde">{producto.titulo}</td>
+                            <td style={{textAlign:'center'}} className="borde">{items}</td>
+                            <td style={{textAlign:'center'}} className="borde">${producto.precio}</td>
+                            <td style={{textAlign:'center'}} className="borde"><b>${producto.precio * items}</b></td>
+                            <th style={{textAlign:'center'}} className="borde"><span style={{cursor:'pointer'}} onClick={removeItem}><FontAwesomeIcon className="fa-1x" icon={faTrashAlt} /></span></th>
+                        </tr>
+                    
     );
 };
