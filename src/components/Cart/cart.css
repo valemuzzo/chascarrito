@@ -16,3 +16,16 @@
 .borde {
   border-bottom: 1px solid #fff;
 }
+.itemscart {
+  display: block;
+  border-radius: 50%;
+  float: left;
+  width: 17px;
+  height: 17px;
+  background-color: blueviolet;
+  color: white;
+  font-size: 0.7em;
+  font-weight: 600;
+
+  text-align: center;
+}

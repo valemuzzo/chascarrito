@@ -7,7 +7,7 @@ import {Table, Button} from 'react-bootstrap';
 
 
 function Cart (){
-    const {cartItems, removeItem, clear}= useCartContext();
+    const {cartItems, clear}= useCartContext();
     const [total, setTotal] = useState();
 
     const itemsCarrito = () =>

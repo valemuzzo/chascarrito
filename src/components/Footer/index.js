@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Footer() {
     return(
         
-    <div className="footer">
+    <div className="footer mt-3">
       <div className="d-flex justify-content-center mt-5 py-5">
       
       <Link className="px-3" to="/"><FontAwesomeIcon className="fa-2x" icon={faFacebookF} /></Link>

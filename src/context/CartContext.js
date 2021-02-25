@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext } from "react";
-import {Alert} from 'react-bootstrap';
 
 export const CartContext = createContext([]);
 export const useCartContext = () => useContext(CartContext);
@@ -28,8 +27,9 @@ export const CartProvider = ({ children, defaultValue }) => {
         window.confirm("desea quitar el producto de su compra?");
         setCartItems(cartItems.filter(item => item.producto.id !== itemId))
     }
-    
+
     const clear = () => setCartItems([]);
+
 
     return <CartContext.Provider value={{cartItems, agregar, removeItem, clear}}>
                 {children}
