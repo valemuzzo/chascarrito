@@ -14,7 +14,7 @@ export const CartItem = ({ producto, items }) => {
                             <td style={{textAlign:'center'}} className="borde">{items}</td>
                             <td style={{textAlign:'center'}} className="borde">${producto.precio}</td>
                             <td style={{textAlign:'center'}} className="borde"><b>${producto.precio * items}</b></td>
-                            <th style={{textAlign:'center'}} className="borde"><span style={{cursor:'pointer'}} onClick={removeItem}><FontAwesomeIcon className="fa-1x" icon={faTrashAlt} /></span></th>
+                            <th style={{textAlign:'center'}} className="borde">{removeItem && (<span style={{cursor:'pointer'}} onClick={() => removeItem(producto.id)}><FontAwesomeIcon className="fa-1x" icon={faTrashAlt} /></span>)}</th>
                         </tr>
                     
     );
