@@ -23,7 +23,7 @@ const ItemDetail = ({producto})=>{
                 <Col>
                     <h3>{producto.titulo}</h3>
                     <h5>Categoría: {producto.categoria}</h5>
-                    <h4 className='precio'>{producto.precio}</h4>
+                    <h4 className='precio'>${producto.precio}</h4>
                     <p>{producto.descripcion}</p>
                     <p><b>Stock: {producto.stock}</b></p>
                     {addCarro?<Link to="/Cart"><Button variant="info" className="px-3" size="sm">

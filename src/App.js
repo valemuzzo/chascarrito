@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import  {BrowserRouter, Switch, Route,} from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { FirestoreProvider } from './context/FirestoreContext';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import ItemListContainer from './containers/ItemListContainer';
@@ -12,6 +13,7 @@ function App() {
 
   return (
     <div className="d-flex flex-column contenedor container-fluid px-0">
+      <FirestoreProvider>
       <CartProvider defaultValue={[]}>
       <BrowserRouter>
         <NavBar/>
@@ -27,6 +29,7 @@ function App() {
           <Footer/>
       </BrowserRouter>
       </CartProvider>
+      </FirestoreProvider>
     </div>
   );
 }

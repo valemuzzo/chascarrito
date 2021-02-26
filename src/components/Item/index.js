@@ -52,7 +52,7 @@ const Item = ({producto})=>{
             <Card.Title><Link to={`/producto/${producto.id}`}>{producto.titulo}</Link></Card.Title>
             
                     <h5>Categoría: {producto.categoria}</h5>
-                    <h4 className='precio'>{producto.precio}</h4> 
+                    <h4 className='precio'>${producto.precio}</h4> 
                     <b>Stock: {producto.categoria}</b>
             
             </Card.Body>
