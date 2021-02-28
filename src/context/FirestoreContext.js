@@ -13,23 +13,25 @@ export const FirestoreProvider = ({ children }) => {
         // Traigo datos
         const itemCollProductos = db.collection('productos');// Consulto la collection y la guardo en una constante
         
+        
         //Get Productos
         const getProductos=  itemCollProductos.get();
         
         //Get Producto
+
         function getProducto(id){
             return itemCollProductos.doc(id).get();
         };
 
         //Get Categoria
-        function getCategoria(categoria){
-            return itemCollProductos.where('categoria', '==', categoria).get();
-        };
+        //function getCategoria(categoria){
+        //    return itemCollProductos.where('categoria.key', '==', categoria).get();
+        //};
 
         
 
     return (
-        <FirestoreContext.Provider value={{getProductos, getProducto, getCategoria}}>
+        <FirestoreContext.Provider value={{getProductos, getProducto, }}>
             {children}
         </FirestoreContext.Provider>
     )

@@ -19,20 +19,19 @@ const ItemListContainer=({text})=>{
    
     useEffect(() => {
         setIsLoading(true);
-        getProductos.then((querySnapshot) => {
-            if (querySnapshot.length === 0) {
+        getProductos.then((valorConsulta) => {
+            if (valorConsulta.length === 0) {
                 console.log('No hay productos');
-                setIsLoading(false)
-            } else {
-                setProductos(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
-                setIsLoading(false)
             }
-        }).catch(error => console.log("error no se encontro"));
+            setProductos(valorConsulta.docs.map(doc => doc.data()));   
+        }).catch((error) => {console.log("error al buscar productos");
+        }).finally(()=>{
+            setIsLoading(false);
+        });
+      
+    }, []);
         
-        setProductos(getProductos);
-        setIsLoading(false);
-      }, []);
-        
+    
 
 //useEffect(()=>{
 //    setIsLoading(true);
@@ -43,13 +42,13 @@ const ItemListContainer=({text})=>{
 //    setIsLoading(false);
 //},[]);
 
-useEffect(() => {
-    setIsLoading(true);
-    getCategoria(categoria).then((querySnapshot) => {
-         setProductosCategoria(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    }).catch(error => console.log(error));
-    setIsLoading(false)
-    }, [categoria]);
+//useEffect(() => {
+//    setIsLoading(true);
+//    getCategoria(categoria).then((querySnapshot) => {
+//         setProductosCategoria(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
+//    }).catch(error => console.log(error));
+//    setIsLoading(false)
+//    }, [categoria]);
 
 //useEffect(() => {
 //    setIsLoading(true);
