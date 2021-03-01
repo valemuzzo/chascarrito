@@ -11,27 +11,39 @@ import Banner from '../img/banner-cotillon.jpg';
 
 const ItemListContainer=({text})=>{
     const {categoria} = useParams();
-    const { getProductos, getCategoria } = useFirestoreContext();
+    const { getProductos, itemCollProductos, itemCollCategorias } = useFirestoreContext();
     const [productos, setProductos] = useState([]);
     const [productosCategoria, setProductosCategoria] = useState([]);
+    const [tituloCat, setTituloCat] = useState();
     const [isLoading, setIsLoading]= useState(false);
     
    
     useEffect(() => {
-        setIsLoading(true);
-        getProductos.then((valorConsulta) => {
-            if (valorConsulta.length === 0) {
-                console.log('No hay productos');
-            }
-            setProductos(valorConsulta.docs.map(doc => doc.data()));   
-        }).catch((error) => {console.log("error al buscar productos");
-        }).finally(()=>{
-            setIsLoading(false);
-        });
-      
-    }, []);
-        
-    
+    setIsLoading(true);
+    itemCollProductos.get().then((valorConsulta) => {
+        let aux = valorConsulta.docs.map( async (product) => {
+            // llamar otra vez a la bd tomando la categoriaID del elemento
+            let categoriaNombre = await itemCollCategorias.doc(product.data().categoria).get()          
+            return {id: product.id, ...product.data(), categoria: categoriaNombre.data().name}
+        })
+        setProductos(aux);
+    })
+}, [])
+
+    //useEffect(() => {
+    //    setIsLoading(true);
+    //    getProductos.then((valorConsulta) => {
+    //        if (valorConsulta.length === 0) {
+    //            console.log('No hay productos');
+    //        }
+    //        setProductos(valorConsulta.docs.map(doc=> ({id: doc.id, ...doc.data()})));   
+    //    }).catch((error) => {console.log("error al buscar productos");
+    //    }).finally(()=>{
+    //        setIsLoading(false);
+    //    });
+    //  
+    //}, []);
+
 
 //useEffect(()=>{
 //    setIsLoading(true);
@@ -41,14 +53,34 @@ const ItemListContainer=({text})=>{
 //    getItems.then((resultado)=>setProductos(resultado));
 //    setIsLoading(false);
 //},[]);
+useEffect(() => {
+    itemCollProductos.get().then((value)=>{
+        let aux = value.docs.map(product =>{
+            itemCollCategorias.doc(product.data().categoria).get()
+            .then((valorConsulta) => {
+                        if (valorConsulta.length === 0) {
+                        }
+                        setProductosCategoria(valorConsulta.docs.map(doc => ({id: doc.id, ...doc.data(), categoria: value.data().nombre })));
+                    })
+                    .catch(error => console.log("error searching items", error))
+                    .finally(() => setProductos(aux), setIsLoading(false));
+            })
+        })
+    }, [categoria]);
+                
 
-//useEffect(() => {
-//    setIsLoading(true);
-//    getCategoria(categoria).then((querySnapshot) => {
-//         setProductosCategoria(querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-//    }).catch(error => console.log(error));
-//    setIsLoading(false)
-//    }, [categoria]);
+///useEffect(() => {
+///    setIsLoading(true);
+///    const categorias = categoria ? itemCollProductos.where('categoria', '==', categoria) : itemCollProductos;
+///    //setTituloCat(categorianombre);
+///    categorias.get().then((valorConsulta) => {
+///        if (valorConsulta.length === 0) {
+///        }
+///        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data(), })));
+///    })
+///    .catch(error => console.log("error searching items", error))
+///    .finally(() => setIsLoading(false));
+///}, [categoria]);
 
 //useEffect(() => {
 //    setIsLoading(true);
@@ -89,7 +121,7 @@ const mostrarCategoria = () => {
     return(
         <>
         {categoria ? 
-        <><h3 className="categoria">{categoria}</h3>
+        <><h3 className="categoria">{tituloCat}</h3>
             
             <CardDeck className="justify-content-center mx-2 mt-5">
                 {mostrarCategoria()}

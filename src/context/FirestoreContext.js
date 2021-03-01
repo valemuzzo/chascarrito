@@ -12,7 +12,7 @@ export const FirestoreProvider = ({ children }) => {
 
         // Traigo datos
         const itemCollProductos = db.collection('productos');// Consulto la collection y la guardo en una constante
-        
+        const itemCollCategorias = db.collection('categorias');
         
         //Get Productos
         const getProductos=  itemCollProductos.get();
@@ -24,14 +24,15 @@ export const FirestoreProvider = ({ children }) => {
         };
 
         //Get Categoria
-        //function getCategoria(categoria){
-        //    return itemCollProductos.where('categoria.key', '==', categoria).get();
-        //};
+        function getCategoria(categoria){
+            
+            return itemCollProductos.where('categoria', '==', categoria).get(); 
+        };
 
         
 
     return (
-        <FirestoreContext.Provider value={{getProductos, getProducto, }}>
+        <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos, getCategoria, itemCollCategorias }}>
             {children}
         </FirestoreContext.Provider>
     )

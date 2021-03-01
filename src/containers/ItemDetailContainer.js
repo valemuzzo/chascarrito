@@ -1,6 +1,7 @@
 import { useFirestoreContext } from '../context/FirestoreContext';
 import { useEffect, useState } from 'react';
 import {  useParams } from 'react-router-dom';
+import { getFirestore } from '../Firebase';
 //import db_productos from '../mocks/db_productos.js';
 import ItemDetail from '../components/ItemDetail';
 
@@ -20,18 +21,18 @@ const ItemDetailContainer = () => {
 //
     //});
     //  }, [])
-     
 
-    useEffect(() => {      
-        getProducto(id).then((doc) => {
-            if(!doc.exists){
-                console.log("no se encontro el item");
-                return;
-            }
-            setProducto({id: doc.id, ...doc.data()});
-        }).catch((error) => {console.log("error no se encontro", error);
-        })
-    },[]);
+   useEffect(() => {      
+       getProducto(id).then((doc) => {
+           if(!doc.exists){
+               console.log("no se encontro el item");
+               return;
+           }
+           setProducto({id: doc.id, ...doc.data()});
+       }).catch((error) => {console.log("error no se encontro", error);
+       })
+   },[]);
+
 
 
       return (
