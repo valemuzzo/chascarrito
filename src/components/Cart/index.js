@@ -3,13 +3,31 @@ import React, { useEffect, useState } from "react";
 import { useCartContext } from "../../context/CartContext";
 import { CartItem } from "./CartItem";
 import { CarroVacio } from "./CarroVacio";
-import {Table, Button} from 'react-bootstrap';
+import {Table, Button, Form} from 'react-bootstrap';
 
 
 function Cart (){
     const {cartItems, clear}= useCartContext();
     const [total, setTotal] = useState();
+ const [cliente, setCliente]= useState('');
+ const [email, setEmail]= useState('');
+ const [orden, setOrden]= useState('');
 
+// const ordenes = db.collection('ordenes');
+// const nuevaOrden = {
+//    cliente: cliente,
+//    email: email,
+//    compra: itemsCarrito,
+//    date: firebase.firestore.timestamp.from Date(new Date());
+//    total: total;
+// }
+// ordenes.add(nuevaOrden).then(({id}))=>{
+//     setOrden(id);
+// }).catch(err=>{setError(error)});
+// }
+//    const finalizarCompra= ()=>{
+//        {cliente: {nombre: , email: , tel: } items:[...itemsCarrito], total}
+//    }
     const itemsCarrito = () =>
       cartItems.map(compra => {
             return (
@@ -55,6 +73,7 @@ function Cart (){
                  </div>
             )}
         </div>
+            
     </>)
 }
 

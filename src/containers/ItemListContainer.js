@@ -19,16 +19,16 @@ const ItemListContainer=({text})=>{
     
    
     useEffect(() => {
-    setIsLoading(true);
-    itemCollProductos.get().then((valorConsulta) => {
-        let aux = valorConsulta.docs.map( async (product) => {
-            // llamar otra vez a la bd tomando la categoriaID del elemento
-            let categoriaNombre = await itemCollCategorias.doc(product.data().categoria).get()          
-            return {id: product.id, ...product.data(), categoria: categoriaNombre.data().name}
+        setIsLoading(true);
+        itemCollProductos.get().then((valorConsulta) => {
+            let aux = valorConsulta.docs.map( async (product) => {
+                // llamar otra vez a la bd tomando la categoriaID del elemento
+                let categoriaNombre = await itemCollCategorias.doc(product.data().categoria).get()          
+                return {id: product.id, ...product.data(), categoria: categoriaNombre.data().name}
+            })
+            setProductos(aux);
         })
-        setProductos(aux);
-    })
-}, [])
+    }, [])
 
     //useEffect(() => {
     //    setIsLoading(true);
@@ -53,34 +53,21 @@ const ItemListContainer=({text})=>{
 //    getItems.then((resultado)=>setProductos(resultado));
 //    setIsLoading(false);
 //},[]);
-useEffect(() => {
-    itemCollProductos.get().then((value)=>{
-        let aux = value.docs.map(product =>{
-            itemCollCategorias.doc(product.data().categoria).get()
-            .then((valorConsulta) => {
-                        if (valorConsulta.length === 0) {
-                        }
-                        setProductosCategoria(valorConsulta.docs.map(doc => ({id: doc.id, ...doc.data(), categoria: value.data().nombre })));
-                    })
-                    .catch(error => console.log("error searching items", error))
-                    .finally(() => setProductos(aux), setIsLoading(false));
-            })
-        })
-    }, [categoria]);
+
                 
 
-///useEffect(() => {
-///    setIsLoading(true);
-///    const categorias = categoria ? itemCollProductos.where('categoria', '==', categoria) : itemCollProductos;
-///    //setTituloCat(categorianombre);
-///    categorias.get().then((valorConsulta) => {
-///        if (valorConsulta.length === 0) {
-///        }
-///        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data(), })));
-///    })
-///    .catch(error => console.log("error searching items", error))
-///    .finally(() => setIsLoading(false));
-///}, [categoria]);
+useEffect(() => {
+    setIsLoading(true);
+    const categorias = categoria ? itemCollProductos.where('categoria', '==', categoria) : itemCollProductos;
+    //setTituloCat(categorianombre);
+    categorias.get().then((valorConsulta) => {
+        if (valorConsulta.length === 0) {
+        }
+        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data(), })));
+    })
+    .catch(error => console.log("error buscando", error))
+    .finally(() => setIsLoading(false));
+}, [categoria]);
 
 //useEffect(() => {
 //    setIsLoading(true);
