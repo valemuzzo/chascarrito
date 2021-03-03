@@ -11,41 +11,26 @@ import Banner from '../img/banner-cotillon.jpg';
 
 const ItemListContainer=({text})=>{
     const {categoria} = useParams();
-    const { getProductos, itemCollProductos, itemCollCategorias } = useFirestoreContext();
+    const { getProductos, itemCollProductos } = useFirestoreContext();
     const [productos, setProductos] = useState([]);
     const [productosCategoria, setProductosCategoria] = useState([]);
     const [tituloCat, setTituloCat] = useState();
     const [isLoading, setIsLoading]= useState(false);
     
     
-
-   //INTENTO de enlazar 2 colecciones
-   useEffect(() => {       
-       setIsLoading(true);        
-       itemCollProductos.get().then((valorConsulta) => { 
-       let aux = valorConsulta.docs.map( async (product) => {   
-            // llamo otra vez a la bd tomando la categoriaID del elemento y la relaciono con      
-            //la coleccion de categorias
-           let auxCategorias = await itemCollCategorias.doc(product.data().categoria).get()               
-           return setProductos(valorConsulta.docs.map(doc=>({ id:doc.id,...doc.data(), categoria: auxCategorias.data().nombre }))); 
-           })
-       })
-   }, [])
-
-    //Codigo que funciona
-    //useEffect(() => {
-    //    setIsLoading(true);
-    //    getProductos.then((valorConsulta) => {
-    //        if (valorConsulta.length === 0) {
-    //            console.log('No hay productos');
-    //        }
-    //        setProductos(valorConsulta.docs.map(doc=> ({id: doc.id, ...doc.data()})));   
-    //    }).catch((error) => {console.log("error al buscar productos");
-    //    }).finally(()=>{
-    //        setIsLoading(false);
-    //    });
-    //  
-    //}, []);
+    useEffect(() => {
+        setIsLoading(true);
+        getProductos.then((valorConsulta) => {
+            if (valorConsulta.length === 0) {
+                console.log('No hay productos');
+            }
+            setProductos(valorConsulta.docs.map(doc=> ({id: doc.id, ...doc.data()})));   
+        }).catch((error) => {console.log("error al buscar productos");
+        }).finally(()=>{
+            setIsLoading(false);
+        });
+      
+    }, []);
 
                   
 
@@ -100,8 +85,8 @@ const mostrarCategoria = () => {
         </>
         :
         <>
-            <div className="textoloco align-items-center mt-5 mx-2">
-            <h2>{text}</h2>
+            <div className="textoloco align-items-center mt-2 mb-2 mx-2">
+            <h1>{text}</h1>
             <img style={{width:'96%'}} src={Banner}/>
             
             </div>

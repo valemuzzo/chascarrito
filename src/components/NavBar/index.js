@@ -18,22 +18,22 @@ function NavBar(){
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <NavDropdown title="Chascos & Bromas" id="basic-nav-dropdown">
-                    <Link to="/2">Bichos</Link>
-                    <Link to="/1">Chascos</Link>
-                    <Link to="/3">Lanza Aguas</Link>
+                    <Link to="/bichos">Bichos</Link>
+                    <Link to="/chascos">Chascos</Link>
+                    <Link to="/lanza-aguas">Lanza Aguas</Link>
                 </NavDropdown>
                 <NavDropdown title="Caracterizaciones" id="basic-nav-dropdown">
-                    <Link to="/4">Heridas</Link>
-                    <Link to="/5">Mascaras</Link>
-                    <Link to="/6">Pelucas</Link>
-                    <Link to="/7">Accesorios</Link>
+                    <Link to="/heridas">Heridas</Link>
+                    <Link to="/mascaras">Mascaras</Link>
+                    <Link to="/pelucas">Pelucas</Link>
+                    <Link to="/accesorios">Accesorios</Link>
                 </NavDropdown>
-                <Link  to="/8">Ilusionismo</Link>
-                <Link to="/9">Disfraces</Link>
+                <Link  to="/ilusionismo">Ilusionismo</Link>
+                <Link to="/disfraces">Disfraces</Link>
                 <NavDropdown title="Cotillón" id="basic-nav-dropdown">
-                    <Link to="/10">Despedida de solteros</Link>
-                    <Link to="/11">Halloween</Link>
-                    <Link to="/12">Zombies</Link>
+                    <Link to="/despedida-solteros">Despedida de solteros</Link>
+                    <Link to="/halloween">Halloween</Link>
+                    <Link to="/zombies">Zombies</Link>
                 </NavDropdown>
                 <Link to="/13">Juguetes</Link>
                 </Nav>
