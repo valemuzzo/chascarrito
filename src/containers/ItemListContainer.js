@@ -17,19 +17,22 @@ const ItemListContainer=({text})=>{
     const [tituloCat, setTituloCat] = useState();
     const [isLoading, setIsLoading]= useState(false);
     
-   
-    useEffect(() => {
-        setIsLoading(true);
-        itemCollProductos.get().then((valorConsulta) => {
-            let aux = valorConsulta.docs.map( async (product) => {
-                // llamar otra vez a la bd tomando la categoriaID del elemento
-                let categoriaNombre = await itemCollCategorias.doc(product.data().categoria).get()          
-                return {id: product.id, ...product.data(), categoria: categoriaNombre.data().name}
-            })
-            setProductos(aux);
-        })
-    }, [])
+    
 
+   //INTENTO de enlazar 2 colecciones
+   useEffect(() => {       
+       setIsLoading(true);        
+       itemCollProductos.get().then((valorConsulta) => { 
+       let aux = valorConsulta.docs.map( async (product) => {   
+            // llamo otra vez a la bd tomando la categoriaID del elemento y la relaciono con      
+            //la coleccion de categorias
+           let auxCategorias = await itemCollCategorias.doc(product.data().categoria).get()               
+           return setProductos(valorConsulta.docs.map(doc=>({ id:doc.id,...doc.data(), categoria: auxCategorias.data().nombre }))); 
+           })
+       })
+   }, [])
+
+    //Codigo que funciona
     //useEffect(() => {
     //    setIsLoading(true);
     //    getProductos.then((valorConsulta) => {
@@ -44,17 +47,7 @@ const ItemListContainer=({text})=>{
     //  
     //}, []);
 
-
-//useEffect(()=>{
-//    setIsLoading(true);
-//    const getItems = new Promise((resolve, reject)=>{
-//        setTimeout(() => resolve (db_productos), 2000);
-//    });
-//    getItems.then((resultado)=>setProductos(resultado));
-//    setIsLoading(false);
-//},[]);
-
-                
+                  
 
 useEffect(() => {
     setIsLoading(true);
@@ -63,23 +56,14 @@ useEffect(() => {
     categorias.get().then((valorConsulta) => {
         if (valorConsulta.length === 0) {
         }
-        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data(), })));
+        
+        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data()})));
     })
     .catch(error => console.log("error buscando", error))
     .finally(() => setIsLoading(false));
 }, [categoria]);
 
-//useEffect(() => {
-//    setIsLoading(true);
-//    const getItems = new Promise((resolve, reject) => {
-//              setTimeout(() => resolve(db_productos), 2000);
-//            });
-//    getItems.then(function (resultado){
-//        let catProd= resultado.filter(prod=>{return prod.categoria==categoria})//busco dentro del resultado (mi DB), un solo producto que tenga un id igual que el id que me guarda useParams (ese id viene de la ruta desde la card)
-//        setProductosCategoria(catProd);
-//        setIsLoading(false);
-//    });
-//}, [categoria]);
+
 
 //Loading...
 if (isLoading){
