@@ -53,7 +53,7 @@ const Item = ({producto})=>{
             
                     <h5>Categoría: {producto.categoria}</h5>
                     <h4 className='precio'>${producto.precio}</h4> 
-                    <b>Stock: {producto.categoria}</b>
+                    <b>Stock: {producto.stock}</b>
             
             </Card.Body>
             <Card.Footer>
