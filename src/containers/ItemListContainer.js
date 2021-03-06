@@ -2,53 +2,59 @@ import { useFirestoreContext } from '../context/FirestoreContext';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {CardDeck} from 'react-bootstrap';
-import db_productos from '../mocks/db_productos.js';
 import ItemList from '../components/ItemList';
 import Item from '../components/Item';
 import Loader from '../img/loader.gif';
-import Banner from '../img/banner-cotillon.jpg';
 
 
 const ItemListContainer=({text})=>{
+    
     const {categoria} = useParams();
-    const { getProductos, itemCollProductos } = useFirestoreContext();
+    const { itemCollProductos, itemCollCategorias } = useFirestoreContext();
     const [productos, setProductos] = useState([]);
     const [productosCategoria, setProductosCategoria] = useState([]);
     const [tituloCat, setTituloCat] = useState();
     const [isLoading, setIsLoading]= useState(false);
     
-    
+
+
     useEffect(() => {
-        setIsLoading(true);
-        getProductos.then((valorConsulta) => {
-            if (valorConsulta.length === 0) {
-                console.log('No hay productos');
-            }
-            setProductos(valorConsulta.docs.map(doc=> ({id: doc.id, ...doc.data()})));   
-        }).catch((error) => {console.log("error al buscar productos");
-        }).finally(()=>{
-            setIsLoading(false);
-        });
-      
-    }, []);
 
-                  
+        if (categoria) {
+            setIsLoading(true);
+            const categorias = categoria ? itemCollProductos.where('categoria', '==', categoria) : itemCollProductos;
+            
+            categorias.get().then(async (value) => {
+                //  Usando Promise.all() para esperar que todos los metodos asincronicos se terminen de ejecutar!!
+                let aux = await Promise.all(value.docs.map( async (product) => {
+    
+                    // Tomamos el documento la id de la categoria
+                    let auxCategorias = await itemCollCategorias.doc(product.data().categoria).get()
+                    setTituloCat(auxCategorias.data().nombre); //Titulo de la categoria (en pagina)
+                    return { id: product.id,...product.data(), categoria:auxCategorias.data().nombre }
+                    
+                }))
+                
+                console.log(aux)
+                setProductosCategoria(aux);
+                
+            }).catch(error => console.log("error buscando", error))
+            .finally(() => setIsLoading(false));
+        } else {
+        itemCollProductos.get().then(async (value) => {
+            //  Usando Promise.all() para esperar que todos los metodos asincronicos se terminen de ejecutar!!
+            let aux = await Promise.all(value.docs.map( async (product) => {
 
-useEffect(() => {
-    setIsLoading(true);
-    const categorias = categoria ? itemCollProductos.where('categoria', '==', categoria) : itemCollProductos;
-    //setTituloCat(categorianombre);
-    categorias.get().then((valorConsulta) => {
-        if (valorConsulta.length === 0) {
-        }
-        
-        setProductosCategoria(valorConsulta.docs.map(doc => ({ id: doc.id, ...doc.data()})));
-    })
-    .catch(error => console.log("error buscando", error))
-    .finally(() => setIsLoading(false));
-}, [categoria]);
-
-
+                // Tomamos el documento la id de la categoria
+                let auxCategorias = await itemCollCategorias.doc(product.data().categoria).get()
+                return {  id: product.id,...product.data(), categoria:auxCategorias.data().nombre }
+            }))
+            console.log(aux)
+            setProductos(aux);
+        }).catch(error => console.log("error buscando", error))
+        .finally(() => setIsLoading(false));
+    }
+    }, [categoria])
 
 //Loading...
 if (isLoading){
@@ -87,7 +93,7 @@ const mostrarCategoria = () => {
         <>
             <div className="textoloco align-items-center mt-2 mb-2 mx-2">
             <h1>{text}</h1>
-            <img style={{width:'96%'}} src={Banner}/>
+            <img style={{width:'96%'}} src="https://muzzo.com.ar/img/banner-chascarrito.jpg"/>
             
             </div>
             <ItemList productos={productos}/>

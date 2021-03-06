@@ -13,6 +13,7 @@ export const FirestoreProvider = ({ children }) => {
 
         // Traigo datos
         const itemCollProductos = db.collection('productos');// Consulto la collection y la guardo en una constante
+        const itemCollCategorias = db.collection('categorias');
         
         //Get Productos
         const getProductos=  itemCollProductos.get();
@@ -23,7 +24,7 @@ export const FirestoreProvider = ({ children }) => {
         };
 
     return (
-        <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos }}>
+        <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos, itemCollCategorias }}>
             {children}
         </FirestoreContext.Provider>
     )
