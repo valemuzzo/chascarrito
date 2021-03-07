@@ -6,6 +6,7 @@ export const useCartContext = () => useContext(CartContext);
 export const CartProvider = ({ children, defaultValue }) => {
     const [cartItems, setCartItems] = useState(defaultValue);
 
+
     
     function agregar (agregaProd) {
     //busco que la id del producto a agregar esté en el estado del carrito

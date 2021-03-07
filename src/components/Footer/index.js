@@ -20,7 +20,7 @@ function Footer() {
       
       </div>
       <div className="text-center py-3">
-        © 2021 Copyright:
+        © 2021 
         <a href="#"> Chascarrito.com.ar</a>
       </div>
     </div>

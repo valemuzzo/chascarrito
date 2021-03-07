@@ -18,4 +18,3 @@ import  '@firebase/firestore';
   export function getFirestore(){
       return firebase.firestore(app);
   }
- 

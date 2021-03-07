@@ -1,3 +1,4 @@
+import firebase from 'firebase/app';
 import {getFirestore} from '../Firebase';
 import React, { createContext, useContext } from 'react';
 
@@ -14,6 +15,9 @@ export const FirestoreProvider = ({ children }) => {
         // Traigo datos
         const itemCollProductos = db.collection('productos');// Consulto la collection y la guardo en una constante
         const itemCollCategorias = db.collection('categorias');
+        const ordenesCollection = db.collection('ordenes');
+        const dataTime= firebase.firestore.FieldValue.serverTimestamp();
+        
         
         //Get Productos
         const getProductos=  itemCollProductos.get();
@@ -24,7 +28,7 @@ export const FirestoreProvider = ({ children }) => {
         };
 
     return (
-        <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos, itemCollCategorias }}>
+        <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos, itemCollCategorias, ordenesCollection, dataTime }}>
             {children}
         </FirestoreContext.Provider>
     )
