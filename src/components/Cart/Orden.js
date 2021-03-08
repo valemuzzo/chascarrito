@@ -1,27 +1,13 @@
-function Orden ({orderId}) {
-
+function Orden ({orderId, cliente}) {
     
-    
-    return <div>
-        
-        <p>Agradecemos su compra, el ID de referencia para retiro es: {orderId}</p>
-    </div>
+ return <>
+        <div>
+        <h5>Su órden fue generada con éxito!</h5>
+        <h5>El ID de referencia es:</h5>
+        <h2>{orderId}</h2>
+        <h5>Hemos enviado una copia de su pedido a: {cliente.email}</h5>
+        </div>
+        </>
 }
 
 export default Orden;
-
-//export const Orden = ({ orderId }) => {
-//    return(
-//    <>
-//    <div className="align-items-center mx-5">
-//    <h2>Su pedido se generó correctamente</h2>
-//    <h3>Su número de orden es:</h3>
-//    <h1>{orderId}</h1>
-//    </div>
-//    <div>{orderId.data}</div>
-//    <div>{orderId.buyer}</div>
-//    <div>{orderId.compra}</div>
-//    
-//    <div>{orderId.total}</div>
-//                 </>)
-//}

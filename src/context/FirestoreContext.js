@@ -26,6 +26,7 @@ export const FirestoreProvider = ({ children }) => {
         function getProducto(id){
             return itemCollProductos.doc(id).get();
         };
+        
 
     return (
         <FirestoreContext.Provider value={{getProductos, getProducto, itemCollProductos, itemCollCategorias, ordenesCollection, dataTime }}>
