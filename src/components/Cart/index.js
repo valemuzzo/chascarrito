@@ -50,8 +50,28 @@ function Cart (){
         console.log(orderId);
         handleShow();
         clear();
+        actualizarStock(nuevaOrden)
     }
     
+    const actualizarStock = (nuevaOrden) => {
+        
+        console.log(nuevaOrden.compra.map());
+        nuevaOrden.compra.map((element) => {
+            let itemID = element.producto.id
+            let cantidad = element.cantidad
+            console.log(itemID);
+            console.log(cantidad);
+
+            const productoDB = itemCollProductos.doc(itemID);
+            productoDB.get().then((value) => {
+                let stockExistente = value.data().stock
+                return productoDB.update({
+                    stock: stockExistente - cantidad
+                });
+            });
+        });
+    };
+
     const ocultar=()=>document.getElementById("formUsuario").remove();
     
     const onSubmit = data => {
