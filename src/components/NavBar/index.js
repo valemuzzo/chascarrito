@@ -18,24 +18,24 @@ function NavBar(){
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                 <NavDropdown title="Chascos & Bromas" id="basic-nav-dropdown">
-                    <Link to="/2">Bichos</Link>
-                    <Link to="/1">Chascos</Link>
-                    <Link to="/3">Lanza Aguas</Link>
+                    <Link to="/2?Bichos">Bichos</Link>
+                    <Link to="/1?Chascos">Chascos</Link>
+                    <Link to="/3?Lanza-aguas">Lanza Aguas</Link>
                 </NavDropdown>
                 <NavDropdown title="Caracterizaciones" id="basic-nav-dropdown">
-                    <Link to="/4">Heridas</Link>
-                    <Link to="/5">Mascaras</Link>
-                    <Link to="/6">Pelucas</Link>
-                    <Link to="/7">Accesorios</Link>
+                    <Link to="/4?Heridas">Heridas</Link>
+                    <Link to="/5?Mascaras">Mascaras</Link>
+                    <Link to="/6?Pelucas">Pelucas</Link>
+                    <Link to="/7?Accesorios">Accesorios</Link>
                 </NavDropdown>
-                <Link  to="/8">Ilusionismo</Link>
-                <Link to="/9">Disfraces</Link>
+                <Link  to="/8?Ilusionismo">Ilusionismo</Link>
+                <Link to="/9?Disfraces">Disfraces</Link>
                 <NavDropdown title="Cotillón" id="basic-nav-dropdown">
-                    <Link to="/10">Despedida de solteros</Link>
-                    <Link to="/11">Halloween</Link>
-                    <Link to="/12">Zombies</Link>
+                    <Link to="/10?Despedida-de-solteros">Despedida de solteros</Link>
+                    <Link to="/11?Halloween">Halloween</Link>
+                    <Link to="/12?Zombies">Zombies</Link>
                 </NavDropdown>
-                <Link to="/13">Juguetes</Link>
+                <Link to="/13?Juguetes">Juguetes</Link>
                 </Nav>
                 <NavLink style={carrito} to="/Cart"><CartWidget /></NavLink>
             </Navbar.Collapse>

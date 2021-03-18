@@ -23,8 +23,9 @@ const Item = ({producto})=>{
         alert(`Agregó ${items} productos al carrito`);
         setAddCarro(items);
         agregar({producto: producto, items: items})
-    };     
-
+    };
+     
+    
     return(
       <>
         <Modal size="lg" show={show} producto={producto} onHide={handleClose}>
@@ -49,7 +50,7 @@ const Item = ({producto})=>{
             <Button onClick={handleShow} variant="outline-info" className='p-1 px-2 mb-2'>
             <FontAwesomeIcon className="fa-1x" icon={faEye} /> Vista rápida
             </Button>
-            <Card.Title><Link to={`/producto/${producto.id}`}>{producto.titulo}</Link></Card.Title>
+            <Card.Title><Link to={`/producto/${producto.id}?${encodeURIComponent(producto.titulo).replace(/%20/g, "-")}`}>{producto.titulo}</Link></Card.Title>
             
                     <h5>Categoría: {producto.categoria}</h5>
                     <h4 className='precio'>${producto.precio}</h4> 

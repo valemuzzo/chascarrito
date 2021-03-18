@@ -1,13 +1,12 @@
 import './cart.css';
 import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form";
+import { Redirect } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 import { useFirestoreContext } from "../../context/FirestoreContext";
 import { CartItem } from "./CartItem";
 import { CarroVacio } from "./CarroVacio";
 import {Table, Button, Form, Row, Col, Collapse} from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
-import Orden from './Orden'
 
 
 function Cart (){
@@ -19,6 +18,7 @@ function Cart (){
     const [cliente, setCliente]= useState('');
     const [orderId, setOrderId] = useState();
     const { register, handleSubmit, watch, errors } = useForm();
+    const [emailCtrl, setEmailCtrl] = useState(false);
 
 
 
@@ -40,41 +40,36 @@ function Cart (){
             compra : cartItems,
             data : dataTime,
             total : total}
-        
             
         ordenesCollection.add(nuevaOrden).then(({id}) => {
             setOrderId(id);
         }).catch(err=>{
             console.log("no se guardó");
         })
-        console.log(orderId);
+        .finally(() => {
         handleShow();
         clear();
-        //actualizarStock(nuevaOrden)
+    })
+        //actualizar stock
+        let itemCartId = cartItems.map(aux => aux.producto.id);
+        console.log(itemCartId);
+        itemCartId.map(cadaId => {
+            itemCollProductos.doc(cadaId).get().then(aux =>{
+                let filtroId = cartItems.find(aux => aux.producto.id == cadaId);
+                return aux.ref.update({stock: aux.data().stock - filtroId.items})
+            })
+        })
     }
-    
-    //const actualizarStock = (nuevaOrden) => {
-    //    console.log(nuevaOrden);
-    //    console.log(nuevaOrden.compra);
-    //    console.log(nuevaOrden.compra.map());
-    //    nuevaOrden.compra.map((element) => {
-    //        let itemID = element.producto.id
-    //        let cantidad = element.cantidad
-//
-    //        const productoDB = itemCollProductos.doc(itemID);
-    //        productoDB.get().then((value) => {
-    //            let stockExistente = value.data().stock
-    //            return productoDB.update({
-    //                stock: stockExistente - cantidad
-    //            });
-    //        });
-    //    });
-    //};
 
     const ocultar=()=>document.getElementById("formUsuario").remove();
     
     const onSubmit = data => {
+        if (data.email === data.confirmail) {
             finalizarCompra(data);
+            ocultar();
+        } else {
+            setEmailCtrl(true);
+        }
     };
 
   const itemsCarrito = () =>
@@ -98,22 +93,7 @@ function Cart (){
 
     
     return(
-    <>  {/*Datos de la orden generada*/}
-        <Modal size="lg" show={show} orderId={orderId} onExit={ocultar}>
-        <Modal.Header closeButton>
-        <Modal.Title>Orden</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <Orden orderId={orderId} cliente={cliente} productos={cartItems} />
-            
-        </Modal.Body>
-        <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose} >
-            Aceptar
-        </Button>
-        
-        </Modal.Footer>
-        </Modal>
+    <>  
 {/*Items en el carrito*/}
         <div className="mincontenedor">
             <h3 className="categoria">Carrito de Compras</h3>
@@ -148,14 +128,14 @@ function Cart (){
         <div className="mx-5 px-5">
             <h3>A continuación complete su datos para generar la órden</h3>
             <Form onSubmit={handleSubmit(onSubmit)}> 
-                <Form.Group id="campos">
+                <Form.Group>
                     <Form.Label>Nombre</Form.Label>
                     <Form.Control name="nombre" placeholder="Ingrese su nombre" ref={register({ required: true })} onChange={handleChange}/>
                     {errors.nombre && <div className="err">Debe completar este campo</div>}
                 </Form.Group>
                 <Row>
                 <Col>
-                <Form.Group id="campos">
+                <Form.Group>
                     <Form.Label>Email</Form.Label>
                     <Form.Control name="email" placeholder="Ingrese su email" ref={register({
                             required: true,
@@ -166,9 +146,19 @@ function Cart (){
                     )}
                     {errors.email?.type === "pattern" && <div className="err">Formato no válido</div>}
                 </Form.Group>
+                <Form.Group>
+                    <Form.Label>Confirme su email</Form.Label>
+                    <Form.Control name="confirmail" placeholder="Ingrese su email" autoComplete="nope" ref={register({
+                            required: true,
+                            
+                            pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i },
+                        })} onChange={handleChange}/>
+                    {errors.confirmail?.type === "pattern" && <div className="error">Formato no válido</div>}
+                    {emailCtrl && <div className="error">Los emails no coinciden</div>}
+                </Form.Group>
                 </Col>
                 <Col>
-                <Form.Group id="campos">
+                <Form.Group>
                     <Form.Label>Telefono</Form.Label>
                     <Form.Control name="telefono" placeholder="Ingrese un numero de contacto" ref={register({ required: true })} onChange={handleChange}/>
                     {errors.telefono && <div className="err">Debe completar este campo</div>}
@@ -181,6 +171,7 @@ function Cart (){
                     Confirmar Pedido</Button>
                 </div>
             </Form>
+            {orderId && <Redirect to={`/orden/${orderId}`} />}
         </div>
       </Collapse>
      

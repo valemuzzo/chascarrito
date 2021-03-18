@@ -1,3 +1,4 @@
+/*Items en el carrito*/
 .precio-total {
   font-size: 1em;
   font-weight: 600;
@@ -29,6 +30,27 @@
 
   text-align: center;
 }
+/*error en formulario*/
 .err {
   color: red;
+}
+
+/*estilo de la orden*/
+.orderId {
+  display: block;
+  border: 1px solid blueviolet;
+  color: blueviolet;
+  padding: 10px;
+  text-align: center;
+}
+.orden {
+  border: 1px solid #ccc;
+  margin: 20px;
+  padding: 20px;
+}
+.orden-branding {
+  max-width: 150px;
+}
+.subtit {
+  color: blueviolet;
 }

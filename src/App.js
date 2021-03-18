@@ -23,7 +23,7 @@ function App() {
               <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
             </Route>
             <Route  exact path='/Cart' component={Cart}/>
-            <Route  exact path='/Orden' component={Orden}/>
+            <Route  exact path='/orden/:orderId' component={Orden}/>
             <Route exact path='/producto/:id' component={ItemDetailContainer}/>
             <Route  exact path='/:categoria' component={ItemListContainer}/>
             <Route path="*" children={<div>Página no encontrada</div>} />
