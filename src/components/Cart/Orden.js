@@ -11,38 +11,35 @@ function Orden () {
         const {ordenesCollection}= useFirestoreContext();
         const { orderId } = useParams();
         const [orderUser, setOrderUser]=useState({});
- 
         useEffect( ()=>{
 
                 const docRef = ordenesCollection.doc(orderId);
 
                 docRef.get().then(async(doc) => {
+                    
                 if (doc.exists) {
-                        const dataOrden = await doc.data();
-                        const resultado = await { ...dataOrden, id: orderId };
-                        setOrderUser(resultado);
-                        console.log("Document data:", doc.data());
-                        //setOrderUser(doc.data());
-                        console.log(orderUser);
-                        
+                    console.log("Document data:", doc.data());
+                    localStorage.setItem("miOrden", JSON.stringify(doc.data()));
+                    let dataLocal = JSON.parse(localStorage.getItem("miOrden"));
+                    setOrderUser(dataLocal);
                 } else {
-                        // doc.data() will be undefined in this case
-                        console.log("No such document!");
+                    // doc.data() will be undefined in this case
+                    console.log("No se encontraron los datos!");
                 }
+                
                 }).catch((error) => {
                 console.log("Error getting document:", error);
                 });
                 
         },[])
-        
+        console.log(orderUser)
     
  return <>
         <div className="orden">
         <h3 className="subtit text-center">Su órden fue generada con éxito!
-        <p>Hemos enviado una copia del detalle a: <h5>{orderUser.buyer.email}</h5></p>
         <p><b>El ID de referencia es:</b></p></h3>
         <h2 className="orderId mb-5">{orderId}</h2>
-        <h5><b>Detalle de orden:</b></h5>
+        {/*<h5><b>Detalle de orden:</b></h5>
         <p><b>ID de Orden:</b> {orderId}</p>     
         <p><b>A nombre de: </b>{orderUser.buyer.nombre}</p>
         <p><b>Email: </b>{orderUser.buyer.email}</p>
@@ -64,7 +61,7 @@ function Orden () {
                         })}
                 </tbody>
         </Table>
-        <div className="precio-total">Precio Total: $ {orderUser.total}</div>
+                <div className="precio-total">Precio Total: $ {orderUser.total}</div>*/}
         
                 </div>
         </>

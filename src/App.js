@@ -11,7 +11,7 @@ import Orden from './components/Cart/Orden';
 
 
 function App() {
-
+  localStorage.removeItem( "miOrden" );
   return (
     <div className="d-flex flex-column contenedor container-fluid px-0">
       <FirestoreProvider>

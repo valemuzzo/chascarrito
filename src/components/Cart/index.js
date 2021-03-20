@@ -13,19 +13,11 @@ function Cart (){
     const {cartItems, clear}= useCartContext();
     const {ordenesCollection, dataTime, itemCollProductos}= useFirestoreContext();
     const [total, setTotal] = useState();
-    const [show, setShow] = useState(false);
     const [open, setOpen] = useState(false);
     const [cliente, setCliente]= useState('');
     const [orderId, setOrderId] = useState();
     const { register, handleSubmit, watch, errors } = useForm();
-    const [emailCtrl, setEmailCtrl] = useState(false);
-
-
-
-
-    const handleClose = () => setShow(false);
-  
-    const handleShow = () => setShow(true);    
+    const [emailCtrl, setEmailCtrl] = useState(false);    
   
     const handleChange=(event)=>{
         setCliente({...cliente, [event.target.name]:event.target.value})
@@ -41,15 +33,18 @@ function Cart (){
             data : dataTime,
             total : total}
             
-        ordenesCollection.add(nuevaOrden).then(({id}) => {
-            setOrderId(id);
-        }).catch(err=>{
-            console.log("no se guardó");
-        })
-        .finally(() => {
-        handleShow();
-        clear();
-    })
+            ordenesCollection.add(nuevaOrden).then(docRef => {
+                console.log("Orden ID: ", docRef.id);
+                setOrderId(docRef.id);  
+                
+                    
+                })
+                .catch(err=>{
+                    console.log("no se guardó");
+                })
+        
+                clear();
+
         //actualizar stock
         let itemCartId = cartItems.map(aux => aux.producto.id);
         console.log(itemCartId);
@@ -60,13 +55,11 @@ function Cart (){
             })
         })
     }
-
-    const ocultar=()=>document.getElementById("formUsuario").remove();
     
     const onSubmit = data => {
         if (data.email === data.confirmail) {
             finalizarCompra(data);
-            ocultar();
+            
         } else {
             setEmailCtrl(true);
         }
