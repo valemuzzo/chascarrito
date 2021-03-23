@@ -9,7 +9,7 @@ export const CartItem = ({ producto, items }) => {
         
             
                         <tr key={producto.id} >
-                            <td style={{textAlign:'center'}} className="borde"><img style={{maxWidth:'50px'}} src={producto.urlImagen}/></td>
+                            <td style={{textAlign:'center'}} className="borde"><img style={{maxWidth:'50px'}} src={producto.urlImagen} alt={producto.titulo}/></td>
                             <td  className="borde">{producto.titulo}</td>
                             <td style={{textAlign:'center'}} className="borde">{items}</td>
                             <td style={{textAlign:'center'}} className="borde">${producto.precio}</td>

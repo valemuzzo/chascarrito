@@ -1,8 +1,7 @@
 import './cart.css';
-import { useCartContext } from "../../context/CartContext";
 
 export const OrdenItem = ({ producto, items }) => {
-    const {removeItem} = useCartContext();
+    
     return (
         
             

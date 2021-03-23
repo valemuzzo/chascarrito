@@ -26,7 +26,7 @@ Sitio de una sola pagina en la que se van mostrando diferentes componentes segun
 - Cada card de producto posee una visualización rápida (botón Vista Rápida que abre un pop-up a detalle de producto sin abandonar el listado inicial) y otra que abre el detalle de producto al clickear el título o la imagen (pagina específica del producto).
 - Añadir al carrito: puedes añadir varios productos diferentes a la vez desde el listado inicial o puedes tambien añadir desde la página de cada producto. A medida que se añaden se puede ver en el ícono del carrito (borde superior derecho), la cantidad añadida.
 - Checkout: al finalizar la compra, si te arrepientes puedes quitar algun producto de la lista de tu carrito. Luego completas los datos de un breve formulario y obtienes el ID de la compra, que se guarda directamente en una colección de órdenes de Firebase.
-- Footer
+- Footer con enlace a redes sociales
 
 # Firebase / Firestore
 

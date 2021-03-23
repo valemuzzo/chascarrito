@@ -10,7 +10,7 @@ import {Table} from 'react-bootstrap';
 function Orden () {
         const {ordenesCollection}= useFirestoreContext();
         const { orderId } = useParams();
-        const [orderUser, setOrderUser]=useState({});
+        const [orderUser, setOrderUser]=useState();
 
 
         useEffect( ()=>{
@@ -40,10 +40,10 @@ function Orden () {
         
         
 
- return <>{!orderUser? <>
+ return <>{orderUser? <>
         <div className="orden">
         <h3 className="subtit text-center">Su órden fue generada con éxito!
-        <p><b>El ID de referencia es:</b></p></h3>
+        <p className="mt-4"><b>El ID de referencia es:</b></p></h3>
         <h2 className="orderId mb-5">{orderId}</h2>
        <h5><b>Detalle de orden:</b></h5>
         <p><b>ID de Orden:</b> {orderId}</p>     

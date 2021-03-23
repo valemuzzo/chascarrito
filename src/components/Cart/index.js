@@ -16,7 +16,7 @@ function Cart (){
     const [open, setOpen] = useState(false);
     const [cliente, setCliente]= useState('');
     const [orderId, setOrderId] = useState();
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit, errors } = useForm();
     const [emailCtrl, setEmailCtrl] = useState(false);    
   
     const handleChange=(event)=>{

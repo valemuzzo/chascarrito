@@ -19,7 +19,7 @@ const ItemDetail = ({producto})=>{
     return(
         <Container>
             <Row key={producto.id}>
-                <Col md="auto"><img src={producto.urlImagen}/></Col>
+                <Col md="auto"><img src={producto.urlImagen} alt={producto.titulo}/></Col>
                 <Col>
                     <h3>{producto.titulo}</h3>
                     <h5>Categoría: {producto.categoria}</h5>

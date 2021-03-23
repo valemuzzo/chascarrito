@@ -13,7 +13,8 @@ function Slider({productos}){
                             <Link to={`/producto/${producto.id}?${encodeURIComponent(producto.titulo).replace(/%20/g, "-")}`}>
                             <img 
                             className="d-block imgslider "
-                            src={producto.urlImagen}/>
+                            src={producto.urlImagen} 
+                            alt={producto.titulo}/>
                             </Link>
                             <Carousel.Caption>
                             <h3><Link to={`/producto/${producto.id}?${encodeURIComponent(producto.titulo).replace(/%20/g, "-")}`}>{producto.titulo}</Link></h3>

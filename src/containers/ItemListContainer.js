@@ -49,7 +49,7 @@ const ItemListContainer=({text})=>{
                 let auxCategorias = await itemCollCategorias.doc(product.data().categoria).get()
                 return {  id: product.id,...product.data(), categoria:auxCategorias.data().nombre }
             }))
-            console.log(aux)
+            
             setProductos(aux);
         }).catch(error => console.log("error buscando", error))
         .finally(() => setIsLoading(false));
@@ -68,7 +68,7 @@ const mostrarCategoria = () => {
     //Loading...
 if (isLoading){
     return(
-        <div className="contenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
+        <div className="contenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader} alt="cargando..."/>cargando...</div>
     )
     };//
     
