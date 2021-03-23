@@ -1,4 +1,4 @@
-<img src="http://chascarrito.com.ar/img/logo.png" />
+<img src="http://chascarrito.com.ar/img/logo-chascarrito.png" />
 
 # Chascarrito
 
