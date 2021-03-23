@@ -1,3 +1,5 @@
+<img src="http://chascarrito.com.ar/img/logo.png" />
+
 # Chascarrito
 
 Proyecto de e-commerce realizado en React con Firebase (Firestore) como base de datos.
@@ -12,7 +14,7 @@ Valeria Muzzo
 
 # Demo
 
-Puedes ver el demo en:
+Puedes ver el demo en: https://chascarrito.netlify.app/
 
 # Funcionalidad
 
