@@ -10,7 +10,7 @@ function NavBar(){
       };
     return(
         <>
-        <Navbar expand="lg" className="mb-4">
+        <Navbar expand="lg">
             <Navbar.Brand href="#home">
             <Link to="/"><img alt="" src={logo} width="40em" className="d-inline-block align-top"/> Chascarrito</Link>
             </Navbar.Brand>

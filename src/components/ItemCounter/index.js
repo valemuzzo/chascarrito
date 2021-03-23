@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const ItemCounter = ({stock, onAdd})=>{
     
-    //logica del contador de productos
+    
     const [items, setItems]= useState(1);
 
     const sumaUno = (stock)=>{
@@ -22,7 +22,9 @@ const ItemCounter = ({stock, onAdd})=>{
         setItems(items-1);
         }
     }
-    //fin logica contador
+    
+    const stockDisponible =  stock > 0;
+
 
     return(
         <>
@@ -31,7 +33,7 @@ const ItemCounter = ({stock, onAdd})=>{
             <input className="items" value={items} disabled></input>
             <Button variant="outline-info" className="px-3" onClick={()=> {sumaUno (stock)}}><b>+</b></Button>
             <br></br>
-            <Button variant="info" className="px-3" onClick={()=> {onAdd (items)}}>
+            <Button variant="info" className="px-3" disabled={!stockDisponible} onClick={()=> {onAdd (items)}}>
             Agregar   <FontAwesomeIcon className="fa-1x" icon={faShoppingBasket} /></Button>
         </ButtonGroup>
         

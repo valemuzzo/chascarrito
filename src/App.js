@@ -8,10 +8,11 @@ import ItemListContainer from './containers/ItemListContainer';
 import ItemDetailContainer from './containers/ItemDetailContainer';
 import Cart from './components/Cart';
 import Orden from './components/Cart/Orden';
+import Error404 from './components/Error404'
 
 
 function App() {
-  localStorage.removeItem( "miOrden" );
+  
   return (
     <div className="d-flex flex-column contenedor container-fluid px-0">
       <FirestoreProvider>
@@ -20,13 +21,13 @@ function App() {
         <NavBar/>
           <Switch>
             <Route exact path='/'>
-              <ItemListContainer text={"Bienvenidos al bazar de chascos y bromas!"}/>
+              <ItemListContainer text={"Sorprende a tus amigos con las mejores bromas de nuestro bazar!"}/>
             </Route>
             <Route  exact path='/Cart' component={Cart}/>
             <Route  exact path='/orden/:orderId' component={Orden}/>
             <Route exact path='/producto/:id' component={ItemDetailContainer}/>
             <Route  exact path='/:categoria' component={ItemListContainer}/>
-            <Route path="*" children={<div>Página no encontrada</div>} />
+            <Route path="*" children={<Error404/>} />
           </Switch>
           <Footer/>
       </BrowserRouter>

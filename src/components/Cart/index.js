@@ -47,11 +47,11 @@ function Cart (){
 
         //actualizar stock
         let itemCartId = cartItems.map(aux => aux.producto.id);
-        console.log(itemCartId);
+        
         itemCartId.map(cadaId => {
             itemCollProductos.doc(cadaId).get().then(aux =>{
                 let filtroId = cartItems.find(aux => aux.producto.id == cadaId);
-                return aux.ref.update({stock: aux.data().stock - filtroId.items})
+                if (aux.data().stock > 0) return aux.ref.update({stock: aux.data().stock - filtroId.items})
             })
         })
     }

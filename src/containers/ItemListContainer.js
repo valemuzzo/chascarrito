@@ -5,7 +5,7 @@ import {CardDeck} from 'react-bootstrap';
 import ItemList from '../components/ItemList';
 import Item from '../components/Item';
 import Loader from '../img/loader.gif';
-
+import Slider from "../components/Slider";
 
 const ItemListContainer=({text})=>{
     
@@ -16,7 +16,7 @@ const ItemListContainer=({text})=>{
     const [tituloCat, setTituloCat] = useState();
     const [isLoading, setIsLoading]= useState(false);
     
-
+    localStorage.removeItem( "miOrden" );
 
     useEffect(() => {
 
@@ -56,12 +56,6 @@ const ItemListContainer=({text})=>{
     }
     }, [categoria])
 
-//Loading...
-if (isLoading){
-return(
-    <div className="contenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
-)
-};//
 
 const mostrarCategoria = () => {
     
@@ -70,7 +64,14 @@ const mostrarCategoria = () => {
         
         <Item  producto={producto} />
     ));
-                
+    
+    //Loading...
+if (isLoading){
+    return(
+        <div className="contenedor d-flex flex-column align-items-center mx-0"><img style={{width:'12em'}} src={Loader}/>cargando...</div>
+    )
+    };//
+    
  return ( 
             <div className="mincontenedor">
                 <h3 className="ml-4">No hay productos en esta categoría</h3>
@@ -83,19 +84,21 @@ const mostrarCategoria = () => {
     return(
         <>
         {categoria ? 
-        <><h3 className="categoria">{tituloCat}</h3>
+        <><h3 className="categoria mt-3">{tituloCat}</h3>
             
             <CardDeck className="justify-content-center mx-2 mt-5">
                 {mostrarCategoria()}
             </CardDeck>
         </>
         :
-        <>
-            <div className="textoloco align-items-center mt-2 mb-2 mx-2">
-            <h1>{text}</h1>
-            <img style={{width:'96%'}} src="https://muzzo.com.ar/img/banner-chascarrito.jpg"/>
+        <><Slider productos={productos}/>
+            <div className="textoloco align-items-center mt-5 mx-2">
+                
+            <h1>{text}</h1></div>
             
-            </div>
+           {/* <img style={{width:'96%'}} src="https://muzzo.com.ar/img/banner-chascarrito.jpg"/>*/}
+            
+            
             <ItemList productos={productos}/>
         </>
         }

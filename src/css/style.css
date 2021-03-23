@@ -18,6 +18,11 @@ p {
   padding: 0;
   text-align: center;
 }
+.textoloco2 {
+  color: #000;
+  font-family: "Nanum Pen Script", cursive;
+  text-align: center;
+}
 .categoria {
   color: purple;
   text-transform: capitalize;

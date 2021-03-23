@@ -17,23 +17,29 @@ function Orden () {
         
                 const docRef = ordenesCollection.doc(orderId);
 
-                docRef.get().then(async(doc) => {
+                docRef.get().then((doc) => {
                     
                 if (doc.exists) {
-                    console.log("Document data:", doc.data());
+                    console.log("Orden Firestore:", doc.data());
                     localStorage.setItem("miOrden", JSON.stringify(doc.data()));
-                    let dataLocal = await JSON.parse(localStorage.getItem("miOrden"));
+                    let dataLocal = JSON.parse(localStorage.getItem("miOrden"));
                     setOrderUser(dataLocal);
+                    
                     
                 }
                 
                 }).catch((error) => {
                 console.log("Error getting document:", error);
                 })
-                
         },[])
-        console.log(orderUser)
-    
+        
+       
+
+        console.log("Orden Local:", orderUser)
+
+        
+        
+
  return <>{!orderUser? <>
         <div className="orden">
         <h3 className="subtit text-center">Su órden fue generada con éxito!
@@ -70,6 +76,7 @@ function Orden () {
                 <p className="pt-4"><b>El ID de referencia es:</b></p></h3>
                 <h2 className="orderId mb-5">{orderId}</h2>
               </div>
+              
               </>}
         </>
 }
