@@ -36,7 +36,7 @@ Se crearon 3 colecciones de datos iniciales:
 - Categorías (de productos)
 - Ordenes
 
-# Intalación
+# Instalación
 
 - Descarga el proyecto o clónalo
 - npm install (en consola de Visual Code) para instalar las dependencias
